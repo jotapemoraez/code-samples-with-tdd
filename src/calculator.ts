@@ -18,6 +18,11 @@ export class Calculator {
 
     }
 
+    convertToMinorDecimal(num:number):string {
+
+        return num.toFixed(2);
+    }
+
     performMultiSum(operands:number[]):number {
 
         return operands.reduce( (acc, currentValue) => {
@@ -77,6 +82,26 @@ export class SquareRootOperator implements Operator {
 
     performOperation(operand:number):number {
         return Math.sqrt(operand);
+    }
+
+
+}
+
+export class DivideOperator implements Operator {
+
+    type:string;
+
+    constructor() {
+        this.type = 'div';
+    }
+
+
+    performOperation(firstOperand:number, secondOperand:number):number {
+
+        if (secondOperand === 0 )
+            throw new Error('division by zero not allowed');
+
+        return firstOperand/secondOperand;
     }
 
 

@@ -57,11 +57,11 @@ describe('calculate loan amount', () => {
         const array = [[1,2,4,5],[2,4,5,6]]
 
         const value = new LruCache(10).getIntersection(array);
-        console.log(value)
 
         expect(value).toEqual([2,4,5])
 
     })
+
 
 
 

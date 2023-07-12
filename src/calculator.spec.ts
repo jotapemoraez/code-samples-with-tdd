@@ -1,12 +1,15 @@
-import { AddOperator, Calculator, MultiplyOperator, Operator, SquareRootOperator } from "./calculator";
-
+import {  BurguerBuilder } from "./builder";
+import { Burguer } from "./burguer";
+import { AddOperator, Calculator, DivideOperator, MultiplyOperator, Operator, SquareRootOperator } from "./calculator";
+// jest.mock('./burguer');
 describe('calculator', () => {
 
     let add:Operator = new AddOperator();
     let mult:Operator = new MultiplyOperator();
     let square:Operator = new SquareRootOperator();
+    let div:Operator = new DivideOperator();
 
-    let calculator:Calculator = new Calculator([add,mult,square]);
+    let calculator:Calculator = new Calculator([add,mult,square, div]);
 
     it('should return the sum of two numbers', () => {
 
@@ -50,4 +53,45 @@ describe('calculator', () => {
 
 
     });
+
+    it ('should return result of division', () => {
+
+        const firstOperand = 10;
+        const secondOperand = 5;
+
+        const actualValue = calculator.performOperation('div', firstOperand, secondOperand);
+
+        expect(actualValue).toEqual(2);
+    })
+
+    it ('should throw exception when divide by zero', () => {
+
+        const divideOperator = new DivideOperator();
+
+        // Verify that dividing by zero throws an exception
+        expect(() => {
+          divideOperator.performOperation(10, 0);
+        }).toThrow(Error);
+    })
+
+    it ('burguer', () => {
+
+        let builder:BurguerBuilder = new BurguerBuilder();
+        // const expected = new Burguer();
+        // expected.setBread( 'bread');
+        // expected.setMeat('meat');
+
+       
+        const actual = builder.addBread('bread').addMeat('meat').build();
+
+        // expect(expected.getBread()).toEqual(actual.getBread());
+        //expect(Burguer).toHaveBeenCalledTimes(1);
+        expect(actual).toEqual(expect.objectContaining({
+            meat: expect.any(String),
+            bread: expect.any(String)
+
+        }))
+    })
+    
+
 });

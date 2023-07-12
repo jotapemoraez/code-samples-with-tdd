@@ -8,4 +8,3 @@ const params = {
     mileage: 50000
 } as LoanRequest;
 
-console.log(getApr(params))

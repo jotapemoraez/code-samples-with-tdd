@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "node dist/index.js      ",
-    "watch": "jest --watchAll",
-    "test": "jest"
+    "watch": "jest --verbose --watchAll",
+    "test": "jest --verbose"
   },
   "devDependencies": {
     "@types/jest": "^29.5.2",

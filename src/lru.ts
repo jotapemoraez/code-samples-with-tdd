@@ -43,7 +43,6 @@ export class LruCache {
         const intersect = list.reduce( (accumulator, current) => {
 
                 const acc = accumulator.filter( element=> current.includes(element));
-                console.log(acc)
                 return acc;
         })
 
