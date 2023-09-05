@@ -11,7 +11,7 @@ describe('calculate loan amount', () => {
       let lru = new LruCache(10);
       var value = 2;
 
-      lru.put(10, value);
+      lru.put(1, value);
 
       expect(lru.get(10)).toBe(value);
 
